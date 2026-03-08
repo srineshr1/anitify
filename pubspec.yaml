@@ -1,0 +1,44 @@
+name: aura_music
+description: A beautiful dark glassmorphism music player for Android.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Audio playback
+  just_audio: ^0.9.36
+  just_audio_background: ^0.0.1-beta.11
+  audio_session: ^0.1.18
+
+  # Local music access
+  on_audio_query: ^2.9.0
+
+  # State management
+  provider: ^6.1.1
+
+  # UI & animations
+  flutter_animate: ^4.3.0
+  blur: ^3.1.0
+  cached_network_image: ^3.3.0
+  palette_generator: ^0.3.3+3
+
+  # Permissions
+  permission_handler: ^11.1.0
+
+  # Utils
+  rxdart: ^0.27.7
+
+  # HTTP for lyrics API
+  http: ^1.2.0
+
+  # Google Fonts (Inter — Spotify-like typeface)
+  google_fonts: ^6.1.0
+
+flutter:
+  uses-material-design: true
+
