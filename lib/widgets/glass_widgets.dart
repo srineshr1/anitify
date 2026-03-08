@@ -29,21 +29,27 @@ class GlassCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Container(
-        padding: padding,
-        decoration: BoxDecoration(
-          color: color ?? Colors.white.withOpacity(0.85),
-          borderRadius: BorderRadius.circular(borderRadius),
-          border: border ?? Border.all(color: AppTheme.border.withOpacity(0.5), width: 1),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.04),
-              blurRadius: 8,
-              offset: const Offset(0, 2),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(borderRadius),
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: blur, sigmaY: blur),
+          child: Container(
+            padding: padding,
+            decoration: BoxDecoration(
+              color: color ?? Colors.white.withOpacity(0.7),
+              borderRadius: BorderRadius.circular(borderRadius),
+              border: border ?? Border.all(color: AppTheme.border.withOpacity(0.5), width: 1),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.04),
+                  blurRadius: 8,
+                  offset: const Offset(0, 2),
+                ),
+              ],
             ),
-          ],
+            child: child,
+          ),
         ),
-        child: child,
       ),
     );
   }
@@ -143,7 +149,11 @@ class _LiquidGlassButtonState extends State<LiquidGlassButton>
       onTapCancel: () => _ctrl.reverse(),
       child: ScaleTransition(
         scale: _scale,
-        child: Container(
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(widget.size / 2),
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 18, sigmaY: 18),
+            child: Container(
               width: widget.size,
               height: widget.size,
               decoration: BoxDecoration(
@@ -188,12 +198,12 @@ class _LiquidGlassButtonState extends State<LiquidGlassButton>
                   color: widget.active
                       ? accentColor
                       : AppTheme.textPrimary.withOpacity(0.7),
-                ),       // Icon
-              ),         // Center
-            ),           // Container
-          ),             // ScaleTransition
-        ),               // ScaleTransition child
-      ),                 // GestureDetector
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
@@ -257,15 +267,15 @@ class _LiquidGlassPlayButtonState extends State<LiquidGlassPlayButton>
             gradient: const LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              colors: [Color(0xFF1A1A1A), Color(0xFF2D2D2D)],
+              colors: [AppTheme.accent, AppTheme.pink],
             ),
             border: Border.all(
-              color: Colors.black.withOpacity(0.15),
+              color: AppTheme.accent.withOpacity(0.3),
               width: 1.5,
             ),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.2),
+                color: AppTheme.accent.withOpacity(0.35),
                 blurRadius: 24,
                 spreadRadius: -4,
               ),

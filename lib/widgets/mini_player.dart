@@ -41,7 +41,9 @@ class MiniPlayer extends StatelessWidget {
             margin: const EdgeInsets.fromLTRB(12, 0, 12, 8),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(18),
-              child: Container(
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+                child: Container(
                   decoration: BoxDecoration(
                     color: Colors.white.withOpacity(0.8),
                     border: Border.all(
@@ -128,6 +130,7 @@ class MiniPlayer extends StatelessWidget {
                       ),
                     ],
                   ),
+                ),
               ),
             ),
           ),
@@ -199,11 +202,11 @@ class _PlayButtonState extends State<_PlayButton>
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           gradient: const LinearGradient(
-            colors: [Color(0xFF1A1A1A), Color(0xFF2D2D2D)],
+            colors: [AppTheme.accent, AppTheme.pink],
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.15),
+              color: AppTheme.accent.withOpacity(0.3),
               blurRadius: 12,
               spreadRadius: -2,
             ),
